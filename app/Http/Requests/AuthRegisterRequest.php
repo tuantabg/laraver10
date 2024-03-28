@@ -22,10 +22,11 @@ class AuthRegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required|confirmed|min:6',
-            'password_confirmation' => 'required|min:6'
+            'name'                  => 'required|string',
+            'email'                 => 'required|string|email|unique:users|max:191',
+            'role_user'             => 'gt:0',
+            'password'              => 'required|string|min:6',
+            'password_confirmation' => 'required|string|same:password|min:6'
         ];
     }
 
@@ -33,20 +34,28 @@ class AuthRegisterRequest extends FormRequest
     {
         return [
             'name' => [
-                'required' => 'Vui lòng nhập tên.'
+                'required' => 'Vui lòng nhập tên.',
+                'string'    => 'Họ tên phải là dạng ký tự.',
             ],
             'email' => [
-                'required' => 'Vui lòng nhập email.'
+                'required'  => 'Vui lòng nhập email.',
+                'string'    => 'Email phải là dạng ký tự.',
+                'email'     => 'Email chưa đúng định dạng. ví dụ: abc@gmail.com',
+                'unique'    => 'Email đã tồn tại, Hãy nhập email khác.',
+                'max'       => 'Độ dài email tối đa 191 ký tự.',
             ],
             'password' => [
                 'required' => 'Vui lòng nhập mật khẩu.',
-                'confirmed' => 'vui lòng nhập lại mật khẩu.',
+                'string' => 'Mật khẩu phải là dạng ký tự.',
                 'min' => 'Vui lòng nhập không dưới 6 ký tự.'
             ],
             'password_confirmation' => [
                 'required' => 'Vui lòng nhập mật khẩu.',
+                'string' => 'Mật khẩu phải là dạng ký tự.',
+                'same' => 'Mật khẩu không khớp.',
                 'min' => 'Vui lòng nhập không dưới 6 ký tự.'
-            ]
+            ],
+            'role_user.gt' => 'Vui lòng chọn vai trò cho tài khoản.'
         ];
     }
 }

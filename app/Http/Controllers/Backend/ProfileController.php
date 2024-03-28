@@ -30,8 +30,10 @@ class ProfileController extends Controller
 
     public function store(AuthRegisterRequest $request)
     {
+        if($this->userService->create($request)) {
+            return redirect()->route('user.profile')->with('success','Thêm mới thành viên thành công.');
+        }
 
-
-        return redirect()->route('user.profile')->with('success','Thêm mới thành viên thành công.');
+        return redirect()->route('create.profile')->with('error','Thêm mới thành viên không thành công, hãy thử lại.');
     }
 }

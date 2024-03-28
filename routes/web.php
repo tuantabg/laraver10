@@ -32,7 +32,7 @@ Route::group(['prefix' => 'admin/'], function() {
 
         Route::get('user-profile', [ProfileController::class, 'index'])->name('user.profile');
         Route::get('create-profile', [ProfileController::class, 'create'])->name('create.profile');
-        Route::get('store-profile', [ProfileController::class, 'store'])->name('store.profile');
+        Route::post('store-profile', [ProfileController::class, 'store'])->name('store.profile');
     });
 });
 

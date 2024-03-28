@@ -7,7 +7,7 @@
     </div>
     <div class="col-md-3 col-3">
         <strong>Email</strong><br />
-        <strong>...</strong>
+        <strong>Vai trò</strong>
     </div>
     <div class="col-md-5 col-5">
         <strong>Họ & tên</strong><br />

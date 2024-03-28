@@ -12,10 +12,10 @@
                 </div>
             </div>
             <div class="col-md-3 col-3">{{ $user->email }}<br />
-                <span class="text-muted"><small>{{ $user->address }}</small></span>
+                <span class="text-muted"><small>...</small></span>
             </div>
             <div class="col-md-5 col-5">{{ $user->name }}<br />
-                <span class="text-muted"><small>{{ $user->about_me }}</small></span>
+                <span class="text-muted"><small>{{ $user->address }}</small></span>
             </div>
             <div class="col-md-1 col-1">
                 <div class="custom-control custom-switch">
