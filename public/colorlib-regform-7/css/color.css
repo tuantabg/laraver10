@@ -1,0 +1,19 @@
+.alert-primary,
+.text-primary {
+    color: rgba(13, 110, 253, 1);
+}
+.alert-success,
+.text-success {
+    color: rgba(25, 135, 84, 1);
+}
+.alert-danger,
+.text-danger {
+    color: rgba(220, 53, 69, 1);
+}
+.alert-warning,
+.text-warning {
+    color: rgba(255, 193, 7, 1);
+}
+.is-invalid {
+    border-bottom-color: rgba(220, 53, 69, 1);
+}
