@@ -30,9 +30,15 @@ Route::group(['prefix' => 'admin/'], function() {
     Route::middleware(['authenticate'])->group(function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-        Route::get('user-profile', [ProfileController::class, 'index'])->name('user.profile');
-        Route::get('create-profile', [ProfileController::class, 'create'])->name('create.profile');
-        Route::post('store-profile', [ProfileController::class, 'store'])->name('store.profile');
+        // User profile
+        Route::controller(ProfileController::class)->group(function () {
+            Route::get('user-profile', 'index')->name('user.profile');
+            Route::get('create-profile', 'create')->name('create.profile');
+            Route::get('{id}/edit-profile', 'edit')->name('edit.profile');
+            Route::post('store-profile', 'store')->name('store.profile');
+            Route::post('update-profile', 'update')->name('update.profile');
+            Route::post('delete-profile', 'delete')->name('delete.profile');
+        });
     });
 });
 

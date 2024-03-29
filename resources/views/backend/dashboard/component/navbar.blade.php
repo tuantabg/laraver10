@@ -11,13 +11,17 @@
             <a class="navbar-brand" href="{{
                 request()->routeIs('dashboard')
                 ?   route('dashboard')
-                :   ((request()->routeIs('user.profile')) || (request()->routeIs('create.profile'))
+                :   ((request()->routeIs('user.profile')) ||
+                    (request()->routeIs('create.profile')) ||
+                    (request()->routeIs('update.profile'))
                         ?   route('user.profile')
                         :   ''
                 )}}" >{{
                     request()->routeIs('dashboard')
                     ?   config('apps.title.index.dashboard')
-                    :   ((request()->routeIs('user.profile')) || (request()->routeIs('create.profile'))
+                    :   ((request()->routeIs('user.profile')) ||
+                        (request()->routeIs('create.profile')) ||
+                        (request()->routeIs('edit.profile'))
                             ?   config('apps.title.index.profile')
                             :   ''
                 )}}

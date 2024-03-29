@@ -9,4 +9,7 @@ return [
     'create' => [
         'member-new' => 'Thêm mới thành viên'
     ],
+    'update' => [
+        'member-update' => 'Cập nhập thành viên'
+    ],
 ];

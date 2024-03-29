@@ -12,7 +12,14 @@
                 </div>
             </div>
             <div class="col-md-3 col-3">{{ $user->email }}<br />
-                <span class="text-muted"><small>...</small></span>
+                <span class="text-muted"><small>
+                    {{ ($user->role_user == 1)
+                        ? 'Khách Hàng (Guest)'
+                        : (($user->role_user == 2)
+                        ? 'Quản trị hệ thống (Admin)'
+                        : 'Nhân viên đăng bài (Posting Staff)')
+                    }}
+                </small></span>
             </div>
             <div class="col-md-5 col-5">{{ $user->name }}<br />
                 <span class="text-muted"><small>{{ $user->address }}</small></span>
@@ -24,10 +31,12 @@
                 </div>
             </div>
             <div class="col-md-2 col-2 text-right">
-                <btn class="btn btn-sm btn-outline-success btn-round btn-icon"><i
-                        class="fa fa-edit"></i></btn>
-                <btn class="btn btn-sm btn-outline-success btn-round btn-icon"><i
-                        class="fa fa-envelope"></i></btn>
+                <a href="{{ route('edit.profile', $user->id) }}" class="btn btn-sm btn-outline-success btn-round btn-icon">
+                    <i class="fa fa-edit"></i>
+                </a>
+                <a href="{{ route('delete.profile') }}" class="btn btn-sm btn-outline-danger btn-round btn-icon">
+                    <i class="fa fa-trash"></i>
+                </a>
             </div>
         </div>
     </li>

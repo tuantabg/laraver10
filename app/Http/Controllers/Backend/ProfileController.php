@@ -2,30 +2,34 @@
 
 namespace App\Http\Controllers\Backend;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AuthRegisterRequest;
-use Illuminate\Http\Request;
 use App\Services\Interfaces\UserServiceInterface as UserService;
+use App\Repositories\Interfaces\UserRepositoryInterface as userRepository;
 
 class ProfileController extends Controller
 {
     protected $userService;
+    protected $userRepository;
 
-    public function __construct(UserService $userService)
-    {
+    public function __construct(
+        UserService $userService,
+        UserRepository $userRepository
+    ){
         $this->userService = $userService;
+        $this->userRepository = $userRepository;
     }
 
     public function index()
     {
         $users = $this->userService->paginate();
-
         return view('backend.profile.index', compact('users'));
     }
 
     public function create()
     {
-        return view('backend.profile.create');
+        return view('backend.profile.store');
     }
 
     public function store(AuthRegisterRequest $request)
@@ -35,5 +39,21 @@ class ProfileController extends Controller
         }
 
         return redirect()->route('create.profile')->with('error','Thêm mới thành viên không thành công, hãy thử lại.');
+    }
+
+    public function edit($id)
+    {
+        $user = $this->userRepository->findById($id);
+        return view('backend.profile.store', compact('user'));
+    }
+
+    public function update()
+    {
+
+    }
+
+    public function delete()
+    {
+
     }
 }

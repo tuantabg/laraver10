@@ -14,15 +14,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
         DB::table('users')->insert([
             'name' => 'tuanta',
             'email' => 'admin@gmail.com',
             'address' => '',
             'about_me' => '',
-            'password' => Hash::make('123456789'),
-            'image' => 'https://colorlib.com/etc/regform/colorlib-regform-7/images/signin-image.jpg'
+            'password' => Hash::make('123456'),
+            'image' => 'https://colorlib.com/etc/regform/colorlib-regform-7/images/signin-image.jpg',
+            'role_user' => 2,
+            'phone' => '',
         ]);
 
         $this->call([
